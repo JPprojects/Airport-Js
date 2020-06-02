@@ -1,10 +1,22 @@
 function Airport() {
-    this.land = function(){
-        return 'landed'
+
+    var hanger = [];
+    const MAX_CAPACITY = 3;
+
+    this.checkCapcity = function(){
+        if ( (hanger.length) >= MAX_CAPACITY){
+            throw new Error("Hanger is full");
+        }
     }
 
-    this.take_off = function(){
-        return 'airborne'
+    this.land = function(plane){
+        this.checkCapcity();
+        hanger.push(plane);
+        return plane.land();
     }
 
+    this.take_off = function(plane){
+        return plane.airborne();
+    }
 }
+
