@@ -1,10 +1,12 @@
-function Airport() {
+const MAX_CAPACITY = 3;
+
+function Airport(capacity = MAX_CAPACITY) {
 
     var hanger = [];
-    const MAX_CAPACITY = 3;
+    var capacity = capacity
 
     this.checkCapcity = function(){
-        if ( (hanger.length) >= MAX_CAPACITY){
+        if ( (hanger.length) >= capacity){
             throw new Error("Hanger is full");
         }
     }

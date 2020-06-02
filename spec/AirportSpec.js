@@ -2,12 +2,13 @@ describe('Airport', function() {
 
     var airport;
     var plane;
+    var weather
 
     beforeEach(function() {
         airport = new Airport();
         // plane = jasmine.createSpy('Plane', ['land'])
         plane = new Plane();
-
+        weather = new weather(); 
     });
 
     describe('Plane can land at airport', function() {
@@ -30,4 +31,19 @@ describe('Airport', function() {
             expect(function(){ airport.land(plane); }).toThrow(new Error('Hanger is full'));
         });
     });
+
+    describe('change hanger capacity', function(){
+        it('hanger capacity changed by airport', function(){
+            var heathrow = new Airport(7);
+            expect(heathrow.land(plane)).toEqual('Landed')
+        });
+    });
+
+
+    describe('Check is weather is stormy', function(){
+        it('plane cannot take off if weather is stormy', function(){
+            expect(function(){plane.take_off(plane);})..toThrow(new Error('Weather is stormy'));
+        });
+    });
+
 });
